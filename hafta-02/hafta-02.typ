@@ -13,7 +13,6 @@
   v(0.15em)
 }
 #let answer(body) = block(inset: (x: 8pt, y: 5pt), stroke: (left: 2pt + rgb("294f70")), fill: rgb("f4f8fb"), radius: 2pt, body)
-#let note(body) = block(inset: 7pt, fill: rgb("faf8ef"), radius: 2pt, body)
 
 #align(center)[
   #text(size: 18pt, weight: "bold")[MATH201 · Differential Equations]
@@ -42,7 +41,7 @@ Since $y''=2+C_1 e^x+C_2 e^(-x)$, subtraction eliminates both constants:
 
 A first-order equation can be written as $d y/d x=f(x,y)$, or in differential form as $M(x,y) d x+N(x,y) d y=0$ (with $f=-M/N$ where $N!=0$). It is *separable* if it can be rearranged into $P(x) d x+Q(y) d y=0$: collect the $y$ terms with $d y$ and the $x$ terms with $d x$. Direct integration gives
 $ integral P(x) d x+integral Q(y) d y=C. $
-When dividing by a factor involving $x$ or $y$, check the excluded values against the original equation.
+When dividing by a factor involving $x$ or $y$, check the excluded values against the equation.
 
 == Example 1.2.1
 
@@ -56,7 +55,7 @@ $ ln(x^2-1)-ln(y^2-1)=C,
   quad (x^2-1)/(y^2-1)=e^C=K. $
 Since $e^C$ is also a constant, it may be renamed $C$; here we use $K$ to distinguish it, with $K>0$ on this region. The initial condition gives $K=1$, so $x^2=y^2$. Since $x,y>1$,
 #answer[$ y=x. $]
-The original differential equation also has the constant solutions $y(x)=1$ and $y(x)=-1$, excluded by division by $y^2-1$. Neither satisfies $y(2)=2$.
+The differential equation also has the constant solutions $y(x)=1$ and $y(x)=-1$, excluded by division by $y^2-1$. Neither satisfies $y(2)=2$.
 
 #block(breakable: false)[
 == Example 1.2.2
@@ -67,7 +66,7 @@ For $y!=0$, separate:
 $ ((1+y^2) d y)/(y^2)=(d x)/(1+x^2). $
 Integration yields $y-1/y=arctan x+C$. From $y(0)=-1$, $C=0$; therefore
 #answer[$ y-1/y=arctan x, quad y(0)=-1. $]
-The constant solution $y(x)=0$ satisfies the original equation but is lost when dividing by $y^2$. It does not satisfy $y(0)=-1$.
+The constant solution $y(x)=0$ satisfies the equation but is lost when dividing by $y^2$. It does not satisfy $y(0)=-1$.
 ]
 
 #block(breakable: false)[
@@ -77,7 +76,7 @@ Solve $(x^2-2x+1) d y-(y^2+2y+1) d x=0$ with $y(2)=1$. The factors are $(x-1)^2$
 $ integral (d y)/(y+1)^2-integral (d x)/(x-1)^2=0. $
 Thus $-1/(y+1)+1/(x-1)=C$. The initial condition gives $C=1/2$, so
 #answer[$ -1/(y+1)+1/(x-1)=1/2. $]
-The constant solution $y(x)=-1$ also satisfies the original differential equation and is excluded by this division. It does not satisfy $y(2)=1$.
+The constant solution $y(x)=-1$ also satisfies the differential equation and is excluded by this division. It does not satisfy $y(2)=1$.
 ]
 
 == Example 1.2.5
@@ -100,22 +99,22 @@ $ integral (y^2 d y)/(1+y^3)=frac(1,3)integral (d u)/u=frac(1,3)ln|1+y^3|,
 $ integral (d x)/(x(1+x))=ln|x|-ln|1+x|=ln|x/(x+1)|. $
 Hence $frac(1,3)ln|1+y^3|+ln|x/(x+1)|=ln K$, or $x(1+y^3)^(1/3)/(x+1)=K$ on the branch of the initial point. The condition gives $K=2^(-2/3)$. Cubing yields
 #answer[$ (x^3(1+y^3))/((x+1)^3)=1/4. $]
-The original differential equation also admits $y(x)=-1$, lost when dividing by $1+y^3$. It does not satisfy $y(1)=1$.
+The differential equation also admits $y(x)=-1$, lost when dividing by $1+y^3$. It does not satisfy $y(1)=1$.
 ]
 
 == Example 1.2.9
 
-The notes give $y'=x sin x/tan y$ with $y(0)=pi$. The stated equation requires both $sin y!=0$ and $cos y!=0$, so that $tan y$ is defined and nonzero. Separation gives $tan y d y=x sin x d x$.
+Solve $y'=x sin x/tan y$ with $y(0)=pi$. The equation requires both $sin y!=0$ and $cos y!=0$, so that $tan y$ is defined and nonzero. Separation gives $tan y d y=x sin x d x$.
 For the left integral, set $t=cos y$, $d t=-sin y d y$:
 $ integral tan y d y=integral (sin y)/(cos y) d y=-integral (d t)/t=-ln|cos y|. $
 For the right integral, integration by parts with $u=x$, $d v=sin x d x$, $d u=d x$, and $v=-cos x$ gives
 $ integral x sin x d x=-x cos x+integral cos x d x=-x cos x+sin x. $
 Therefore
 $ -ln|cos y|=-x cos x+sin x+C. $
-At $y=pi$, $tan y=0$, so the stated differential equation is undefined at the initial point. If instead we require the one-sided limit $lim_(x arrow 0^+) y(x)=pi$, the integrated relation forces $C=0$. Define $A(x)=sin x-x cos x$; then
+At $y=pi$, $tan y=0$, so the differential equation is undefined at the initial point. For a solution with $lim_(x arrow 0^+) y(x)=pi$, taking the limit in the integrated relation gives $C=0$. Define $A(x)=sin x-x cos x$; then
 $ |cos y|=e^(-A(x)). $
 Near $y=pi$, $cos y<0$, so $cos y=-e^(-A(x))$. Since $A(0)=0$ and $A'(x)=x sin x>0$ for $0<x<pi$, we have $A(x)>0$ there. There are two branches approaching $pi$ from opposite sides:
 #answer[$ y_-(x)=pi-arccos(e^(-A(x))), quad y_+(x)=pi+arccos(e^(-A(x))), quad 0<x<pi. $]
-Both satisfy the original equation on this open interval and tend to $pi$ as $x arrow 0^+$. For $-pi<x<0$, $A(x)<0$, so $e^(-A(x))>1$: no real solution of the $C=0$ relation exists there. Thus no solution approaching $pi$ from the left exists; this is a local statement near $x=0$, not a claim that the equation has no solutions anywhere on $x<0$.
+Both satisfy the equation on this open interval and tend to $pi$ as $x arrow 0^+$. For $-pi<x<0$, $A(x)<0$, so $e^(-A(x))>1$: no real solution of the $C=0$ relation exists there. Hence there is no real solution on $-pi<x<0$ that tends to $pi$ as $x arrow 0^-$.
 
-#note[*Initial-point distinction:* Two right-hand solution branches extend continuously to $y(0)=pi$, but neither is a classical solution of the stated IVP at $x=0$, where its right-hand side is undefined.]
+Both branches extend continuously to $y(0)=pi$. The initial value problem has no classical solution at $x=0$, because the right-hand side of the differential equation is undefined there.
